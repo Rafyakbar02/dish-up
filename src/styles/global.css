@@ -1,0 +1,17 @@
+:root {
+    --cobalt: #1A3CA8;
+    --cream: #F7EFE2;
+    --card-cream: #FBF6EC;
+    --panel: #EFE6D3;
+    --input-fill: #E9E0CF;
+    --muted-cream: #4B5FA8;
+    --muted-cobalt: #B9C4F0;
+    --divider-color: #A9B6E0;
+    --placeholder-text: #5A6CB0;
+
+    --button-radius: 999px;
+    --card-radius: 24px;
+    --cobalt-outlines: 1.5px solid var(--cobalt);
+    --touch-target-size: 44px;
+    --mobile-breakpoint: 390px;
+}

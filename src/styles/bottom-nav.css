@@ -1,0 +1,30 @@
+@import "global.css";
+
+.bottom-nav {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    height: 64px;
+    box-sizing: border-box;
+    padding: 7px;
+    display: flex;
+    gap: 4px;
+    border: var(--cobalt-outlines);
+    border-radius: var(--button-radius);
+}
+
+.nav-link {
+    flex: 1;
+    min-width: 0;
+    height: 48px;
+    border-radius: var(--button-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 0;
+    text-decoration: none;
+}
