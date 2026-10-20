@@ -2,9 +2,12 @@
 
 .bottom-nav {
     position: fixed;
+    left: 0;
+    right: 0;
     bottom: 16px;
     height: 64px;
-    width: var(--mobile-breakpoint);
+    width: calc(100% - 32px);
+    max-width: var(--mobile-breakpoint);
     box-sizing: border-box;
     margin: 0 auto;
     padding: 7px;

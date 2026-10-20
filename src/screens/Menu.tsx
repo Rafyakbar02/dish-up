@@ -31,6 +31,7 @@ export default function Menu() {
     return (
         <section style={{
             marginBottom: '96px',
+            padding: '1rem'
         }}>
             <div class="menu-header">
                 <p>Hello, chef!</p>
