@@ -1,0 +1,48 @@
+@import './global.css';
+
+.link-button {
+    padding: 0.5rem 1rem;
+    border-radius: var(--button-radius);
+    border: var(--cobalt-outlines);
+    font-weight: bold;
+}
+
+.menu-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.filter-button {
+    padding: 0.5rem 1rem;
+    border-radius: var(--button-radius);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.menu-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
