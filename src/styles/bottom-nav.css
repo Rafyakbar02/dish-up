@@ -1,15 +1,16 @@
 @import "global.css";
 
 .bottom-nav {
-    position: absolute;
-    left: 16px;
-    right: 16px;
+    position: fixed;
     bottom: 16px;
     height: 64px;
+    width: var(--mobile-breakpoint);
     box-sizing: border-box;
+    margin: 0 auto;
     padding: 7px;
     display: flex;
     gap: 4px;
+    background-color: white;
     border: var(--cobalt-outlines);
     border-radius: var(--button-radius);
 }
