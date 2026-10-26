@@ -9,3 +9,10 @@
 .accordion-content {
     padding: 0;
 }
+
+.link-button {
+    padding: 0.5rem 1rem;
+    border-radius: var(--button-radius);
+    border: var(--cobalt-outlines);
+    font-weight: bold;
+}

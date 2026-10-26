@@ -37,8 +37,8 @@ export default function Menu() {
                 <p>Hello, chef!</p>
 
                 <div class="button-group">
-                    <Link class="link-button" href="/recipe/new">Recipe</Link>
-                    <Link class="link-button" href="/list">List</Link>
+                    <Link class="link-button" href="/recipe/new" aria-label="Add new recipe">+ Recipe</Link>
+                    <Link class="link-button" href="/list" aria-label="Open grocery list">List</Link>
                 </div>
             </div>
 

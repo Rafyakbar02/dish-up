@@ -38,8 +38,8 @@ export default function Accordion({ handleToggle, isOpen, menuName, cookingTime,
           <p>{description}</p>
           <p>{calories} kcal | serves {servingSize}</p>
           <div class="button-group">
-            <button>Add to list</button>
-            <Link href="/recipe/1">Edit</Link>
+            <button>+ Add to list</button>
+            <Link class="link-button" href="/recipe/1">Open full recipe</Link>
           </div>
         </div>
       }
