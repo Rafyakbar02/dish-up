@@ -13,28 +13,16 @@ export default function Menu() {
         setOpenIndex(index === openIndex ? null : index);
     };
 
-    const { state, actions } = useApp();
+    const { state } = useApp();
 
     return (
-        <section style={{
-            marginBottom: '96px',
-            padding: '1rem'
-        }}>
+        <section>
             <div class="menu-header">
                 <p>Hello, chef!</p>
 
                 <div class="button-group">
                     <Link class="link-button" href="/recipe/new" aria-label="Add new recipe">+ Recipe</Link>
-                    <Link href="/list" aria-label="Open grocery list" style={{
-                        position: 'relative',
-                        width: '32px',
-                        height: '32px',
-                        borderRadius: 'var(--button-radius)',
-                        border: 'var(--cobalt-outlines)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}>
+                    <Link href="/list" class="list-button" aria-label="Open grocery list">
                         <BagIcon size={16} color={'var(--cobalt)'} />
                     </Link>
                 </div>
@@ -71,16 +59,10 @@ export default function Menu() {
                 {state.recipes.map((item, i) => {
                     return (
                         <Accordion
-                            id={item.id}
-                            handleToggle={() => handleToggle(i)}
-                            handleFav={() => actions.toggleFav(item.id)}
+                            item={item}
+                            onToggle={() => handleToggle(i)}
                             isOpen={i === openIndex}
                             isFav={!!state.favs[item.id]}
-                            menuName={item.name}
-                            cookingTime={item.time}
-                            description={item.description}
-                            calories={item.kcal}
-                            servingSize={item.base}
                         />
                     )
                 })}

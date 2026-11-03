@@ -1,10 +1,10 @@
-import { Link } from "wouter-preact";
 import { useParams } from "wouter-preact";
 import { useApp } from "../data/app";
 import Stepper from "../components/Stepper";
 import { useState } from "preact/hooks";
 import { format, scaled, limitServings } from "../lib/scale";
-import { BackIcon, HeartIcon } from "../components/Icons";
+import BackButton from "../components/BackButton";
+import FavButton from "../components/FavButton";
 
 export default function RecipeDetail() {
     const { id } = useParams<{ id: string }>();
@@ -25,27 +25,12 @@ export default function RecipeDetail() {
     return (
         <section style={{ marginBottom: '96px', padding: '1rem' }}>
             <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Link href='/' style={{ width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Back to menu">
-                    <BackIcon size={24} color={'var(--cobalt)'} />
-                </Link>
-                <button
+                <BackButton href="/" aria-label="Back to menu" />
+                <FavButton
                     onClick={() => actions.toggleFav(id)}
+                    selected={isFav}
                     aria-label={isFav ? 'Remove from favorites' : 'Add to favorites'}
-                    aria-pressed={isFav}
-                    style={{
-                        width: 44,
-                        height: 44,
-                        border: 'none',
-                        background: 'none',
-                        cursor: 'pointer',
-                        padding: '0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
-                    <HeartIcon size={24} filled={isFav} color={'var(--cobalt)'} />
-                </button>
+                />
             </div>
 
             {recipe ? (

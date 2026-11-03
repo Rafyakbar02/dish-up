@@ -1,21 +1,18 @@
 import { Link } from "wouter-preact";
 import '../styles/accordion.css'
 import { HeartIcon } from "./Icons";
+import type { Recipe } from "../types";
+import { useApp } from "../data/app";
 
 type AccordionProps = {
-  id: string;
-  handleToggle: any;
-  handleFav: any;
+  item: Recipe;
+  onToggle: () => void;
   isOpen: boolean;
   isFav: boolean;
-  menuName: string;
-  cookingTime: number;
-  description: string;
-  calories: number;
-  servingSize: number;
 }
 
-export default function Accordion({ id, handleToggle, handleFav, isOpen, isFav, menuName, cookingTime, description, calories, servingSize }: AccordionProps) {
+export default function Accordion({ item, onToggle, isOpen, isFav }: AccordionProps) {
+  const { actions } = useApp();
 
   return (
     <div class="accordion">
@@ -25,7 +22,7 @@ export default function Accordion({ id, handleToggle, handleFav, isOpen, isFav, 
         gap: 16
       }}>
         <button
-          onClick={() => handleFav(id)}
+          onClick={() => actions.toggleFav(item.id)}
           aria-label={isFav ? 'Remove from favorites' : 'Add to favorites'}
           aria-pressed={isFav}
           style={{
@@ -41,7 +38,7 @@ export default function Accordion({ id, handleToggle, handleFav, isOpen, isFav, 
         </button>
 
         <button
-          onClick={handleToggle}
+          onClick={onToggle}
           style={{
             display: 'flex',
             flexDirection: 'row',
@@ -53,20 +50,20 @@ export default function Accordion({ id, handleToggle, handleFav, isOpen, isFav, 
             padding: '0',
             alignItems: 'baseline',
           }}>
-          <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{menuName}</span>
+          <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{item.name}</span>
           <span style={{
             fontSize: '24px',
-          }} class="hand">{cookingTime} min</span>
+          }} class="hand">{item.time} min</span>
         </button>
       </div>
 
       {isOpen &&
         <div class="accordion-content">
-          <p>{description}</p>
-          <p>{calories} kcal | serves {servingSize}</p>
+          <p>{item.description}</p>
+          <p>{item.kcal} kcal | serves {item.base}</p>
           <div class="button-group">
             <button>+ Add to list</button>
-            <Link class="link-button" href={`/recipe/${id}`}>Open full recipe</Link>
+            <Link class="link-button" href={`/recipe/${item.id}`}>Open full recipe</Link>
           </div>
         </div>
       }
