@@ -3,6 +3,8 @@ import '../index.css';
 import { Link } from 'wouter-preact';
 import Accordion from '../components/Accordion';
 import { useState } from 'preact/hooks';
+import { useApp } from '../data/app';
+import { BagIcon } from '../components/Icons';
 
 export default function Menu() {
     const [openIndex, setOpenIndex] = useState(null);
@@ -11,22 +13,7 @@ export default function Menu() {
         setOpenIndex(index === openIndex ? null : index);
     };
 
-    const menuItems = [
-        {
-            name: "Garlic Butter Shrimp",
-            time: 30,
-            desc: "A quick and easy garlic butter shrimp recipe that is perfect for a weeknight dinner. The shrimp are cooked in a flavorful garlic butter sauce and served over pasta or rice.",
-            cal: 300,
-            size: 2
-        },
-        {
-            name: "Tomato Egg Stir Fry",
-            time: 30,
-            desc: "A quick and delicious stir-fry made with tomatoes and eggs.",
-            cal: 300,
-            size: 2
-        }
-    ]
+    const { state, actions } = useApp();
 
     return (
         <section style={{
@@ -38,7 +25,18 @@ export default function Menu() {
 
                 <div class="button-group">
                     <Link class="link-button" href="/recipe/new" aria-label="Add new recipe">+ Recipe</Link>
-                    <Link class="link-button" href="/list" aria-label="Open grocery list">List</Link>
+                    <Link href="/list" aria-label="Open grocery list" style={{
+                        position: 'relative',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: 'var(--button-radius)',
+                        border: 'var(--cobalt-outlines)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <BagIcon size={16} color={'var(--cobalt)'} />
+                    </Link>
                 </div>
             </div>
 
@@ -70,17 +68,19 @@ export default function Menu() {
                     <p>ready in a flash</p>
                 </div>
 
-                {menuItems.map((item, i) => {
+                {state.recipes.map((item, i) => {
                     return (
                         <Accordion
-                            key={i}
+                            id={item.id}
                             handleToggle={() => handleToggle(i)}
+                            handleFav={() => actions.toggleFav(item.id)}
                             isOpen={i === openIndex}
+                            isFav={!!state.favs[item.id]}
                             menuName={item.name}
                             cookingTime={item.time}
-                            description={item.desc}
-                            calories={item.cal}
-                            servingSize={item.size}
+                            description={item.description}
+                            calories={item.kcal}
+                            servingSize={item.base}
                         />
                     )
                 })}

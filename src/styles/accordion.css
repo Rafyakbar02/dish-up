@@ -8,6 +8,15 @@
 
 .accordion-content {
     padding: 0;
+
+    button {
+        background-color: transparent;
+        padding: 0.5rem 1rem;
+        border-radius: var(--button-radius);
+        border: var(--cobalt-outlines);
+        font-weight: bold;
+        font-size: .75rem;
+    }
 }
 
 .link-button {
@@ -15,4 +24,5 @@
     border-radius: var(--button-radius);
     border: var(--cobalt-outlines);
     font-weight: bold;
+    font-size: .75rem;
 }

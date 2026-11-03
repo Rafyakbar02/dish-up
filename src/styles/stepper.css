@@ -1,0 +1,36 @@
+@import "global.css";
+
+.stepper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: var(--touch-target-size);
+    display: flex;
+    justify-content: space-between;
+    width: 110px;
+    border-radius: var(--button-radius);
+    overflow: hidden;
+    margin-top: 16px;
+    background-color: var(--cobalt);
+    color: var(--cream);
+}
+
+.value-display {
+    min-width: var(--touch-target-size) / 2;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.decrement-button,
+.increment-button {
+    width: var(--touch-target-size);
+    height: var(--touch-target-size);
+    border: none;
+    background-color: var(--cobalt);
+    font-size: 22px;
+    line-height: 1;
+    text-align: center;
+    color: var(--cream);
+    cursor: pointer;
+}
